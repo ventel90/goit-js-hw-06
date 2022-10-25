@@ -21,12 +21,23 @@ const images = [
   },
 ];
 
-const galleryList = document.querySelector('.gallery');
-images.forEach(el => {
-  galleryList.insertAdjacentHTML(
-    'afterbegin',
-    `<li><img src = "${el.url}" alt = "${el.alt}"  width = "150" height = "100" /></li>`,
-  );
-  galleryList.setAttribute('style', 'list-style-type:none; display: flex;');
-});
+// const galleryList = document.querySelector('ul.gallery');
+// images.forEach(el => {
+//   galleryList.insertAdjacentHTML(
+//     'afterbegin',
+//     `<li><img src = "${el.url}" alt = "${el.alt}"  width = "150" height = "100" /></li>`,
+//   );
+//   galleryList.setAttribute('style', 'list-style-type:none; display: flex;');
+// });
 
+const galleryList = document.querySelector('ul.gallery');
+const imagesList = ({ url, alt }) => {
+  return `<li><img src = ${url} alt = '${alt}' width="630" height="375"></li>`;
+};
+galleryList.setAttribute(
+  'style',
+  'list-style-type:none; display: flex;',
+);
+const addImg = images.map(imagesList).join('');
+console.log(addImg);
+galleryList.insertAdjacentHTML('afterbegin', addImg);

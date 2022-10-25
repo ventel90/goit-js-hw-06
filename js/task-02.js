@@ -28,19 +28,25 @@ const ingredients = [
   'Condiments',
 ];
 
-// const ulEl = document.getElementById('ingredients');
-// const foodIngredients = ingredients.forEach(ingredient => {
-//   const items = document.createElement('li');
-//   items.innerHTML = ingredient;
-//   ulEl.append(items);
-//   parent.append(...items);
+// const ulEl = document.querySelector('ul#ingredients');
+// ingredients.map(elem => {
+//   const itemEl = document.createElement('li');
+//   itemEl.classList.add('item');
+//   itemEl.textContent = elem;
+//   ulEl.append(itemEl);
 // });
-// console.log(foodIngredients);
 
-const ulEl = document.querySelector('#ingredients');
-ingredients.map(elem => {
-  const itemEl = document.createElement('li');
-  itemEl.classList.add('item');
-  itemEl.textContent = elem;
-  ulEl.append(itemEl);
-});
+
+const ulEl = document.querySelector('ul#ingredients');
+const foodIngredients = arrayOfItems => {
+  console.log(arrayOfItems);
+  console.log(document.createElement('li'));
+  ulEl.append(
+    ...arrayOfItems.map(itemName => {
+      const li = document.createElement('li');
+      li.textContent = itemName;
+      return li;
+    }),
+  );
+};
+foodIngredients(ingredients);
